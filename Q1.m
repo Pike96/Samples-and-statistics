@@ -8,3 +8,11 @@ for i=1:n
 end
 
 hist(X,100)
+
+disp(['The sample mean is: ',num2str(sum(X)/n)]);
+
+for i=1:n
+    Sx2=Sx2+(X(i)-sum(X)/n)^2;
+end
+
+disp(['The sample variance is: ',num2str(Sx2/(n-1))]);

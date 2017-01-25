@@ -1,12 +1,12 @@
-n = 100000;                   % n is the sequence length
+n = input('Please enter the number of samples: ');
 Xk = rand(1,n);               % Xk is X_k
-Xk1 = circshift(Xk,1,2);      % Xk1 is X_k + 1 by shift array circularly first
-Xk1(1) = 0;                   % Set the first element to 0 to get X_k + 1
+Xk1 = circshift(Xk,1,2);      % Xk1 is X_k+1 by shift array circularly
+Xk1(1) = 0;                   % Set the first element to 0 to get X_k+1
 Cov_a = cov(Xk,Xk1)           % Get covariance matrix
 
-disp(['n = 100000, Cov[X_k, X_k + 1] is: ',num2str(Cov_a(2,1))]); % Display Cov(X_k,X_k + 1)
+disp(['Cov[X_k, X_k+1] is: ',num2str(Cov_a(2,1))]);
 
-% Xk and Xk + 1 are correlated because cov... is never to be 0.
+% Xk and Xk+1 are correlated because cov... is never to be 0.
 % They are not independent but tends to be independent when n is big.
 
 Yk = [];                      % Create Yk
@@ -19,6 +19,6 @@ end
 
 Cov_b = cov(Xk,Yk)
 
-disp(['n = 100000, Cov[X_k, Y_k] is: ',num2str(Cov_b(2,1))]); % Display Cov(X_k,Y_k)
+disp(['Cov[X_k, Y_k] is: ',num2str(Cov_b(2,1))]);
 
 % Correlated. Cov(X_k,Y_k) is almost equal to Cov(X_k,X_k)

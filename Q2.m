@@ -6,9 +6,6 @@ Cov_a = cov(Xk,Xk1)           % Get covariance matrix
 
 disp(['Cov[X_k, X_k+1] is: ',num2str(Cov_a(2,1))]);
 
-% Xk and Xk+1 are correlated because cov... is never to be 0.
-% They are not independent but tends to be independent when n is big.
-
 Yk = [];                      % Create Yk
 Yk(1) = Xk(1);
 Yk(2) = Xk(2) - 2*Xk(1);
@@ -20,5 +17,3 @@ end
 Cov_b = cov(Xk,Yk)
 
 disp(['Cov[X_k, Y_k] is: ',num2str(Cov_b(2,1))]);
-
-% Correlated. Cov(X_k,Y_k) is almost equal to Cov(X_k,X_k)

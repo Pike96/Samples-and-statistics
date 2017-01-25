@@ -1,20 +1,20 @@
-n = 10000;                % n is experiment times
+n = input('Please enter the number of samples: ');
 M = 10;
-A = randi([0 M-1],1,n);
+A = randi([0 M-1],1,n);     % A is the randaom number from 0,1,...,9
 
 hist(A)
 
 X = hist(A);
-X_theo = repmat(n/M,1,M);
+X_theo = repmat(n/M,1,M);   % Expected number of samples
 ChisquaredTest = sum((X-X_theo).^2./X_theo);
-ChisquaredThreshold_95 = chi2inv(0.95,M);
+ChisquaredThreshold_95 = chi2inv(0.95,M-1);
 
-disp(['ChisquaredTest = ',num2str(ChisquaredTest),',	ChisquaredTest = ',num2str(ChisquaredThreshold_95)]);
+disp(['ChisquaredTest = ',num2str(ChisquaredTest), ...
+    ',	ChisquaredTest = ',num2str(ChisquaredThreshold_95)]);
 
-Y = [0 repmat(n/M,1,M-1)]
-ChisquaredTest = (X-Y).^2./Y%sum((X-Y).^2./Y);
-ChisquaredThreshold_95 = chi2inv(0.95,M);
+X2 = [X(2:10) 0];           % The data in the range 1,2,...,10
+ChisquaredTest = sum((X2-X_theo).^2./X_theo);
+ChisquaredThreshold_95 = chi2inv(0.95,M-1);
 
-disp(['ChisquaredTest = ',num2str(ChisquaredTest),',	ChisquaredTest = ',num2str(ChisquaredThreshold_95)]);
-
-% use different n, infinite? 
+disp(['ChisquaredTest = ',num2str(ChisquaredTest), ...
+    ',	ChisquaredTest = ',num2str(ChisquaredThreshold_95)]);
